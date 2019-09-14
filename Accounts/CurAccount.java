@@ -13,13 +13,13 @@ public class CurAccount {
     }
 
     public void setAmount(double amount) { // Положить денег
-        this.amount = this.amount + amount;
+        this.amount += amount;
     }
 
     public void wdAmount(double amount) //Снять денег
     {
         if (amount <= this.amount) {
-            this.amount = this.amount - amount;
+            this.amount -= amount;
             getWdMessage(amount, this.amount);
         }
         else {

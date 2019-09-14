@@ -1,31 +1,28 @@
 package Accounts;
 
-import java.util.Calendar;
-import java.util.Date;
-
+import java.time.LocalDate;
 public class DepAccount extends CurAccount {
-    Calendar depDay = Calendar.getInstance();
+    LocalDate depInDate;
     public DepAccount(double amount) {
         super(amount);
-        Date today = new Date();
-        depDay.set(today.getYear(), today.getMonth(), today.getDate());
+        depInDate = LocalDate.now();
     }
     public void setAmount(double amount)
     {
-        this.amount = this.amount + amount;
-        Date newDate = new Date();
-        depDay.set(newDate.getYear(), newDate.getMonth(), newDate.getDate());
+        this.amount += amount;
+        depInDate = LocalDate.now();
     }
     public void wdAmount (double amount)
     {
-        Date wdDate = new Date();
+         LocalDate wdDay = LocalDate.now();
         if (amount <= this.amount) {
-            if (wdDate.getYear() >= depDay.get(Calendar.YEAR) && wdDate.getMonth() >= (depDay.get(Calendar.MONTH) + 1)
-                    && wdDate.getDate() >= (depDay.get(Calendar.DAY_OF_MONTH) + 1)) {
-                this.amount = this.amount - amount;
+            if (wdDay.getMonth().compareTo(depInDate.getMonth()) >= 1
+                    && wdDay.getDayOfMonth() - depInDate.getDayOfMonth() >=0)
+            {
+                this.amount -= amount;
                 getWdMessage(amount, this.amount);
             } else {
-                System.out.println("Вы пока не можете снять денег с депозита!!!");
+                System.out.println("Снятие денег с данного счета не возможно до " + depInDate.plusMonths(1) + " !");
             }
         } else
             {
