@@ -11,6 +11,7 @@ public class Main {
         CurAccount curMoney = new CurAccount(0.);
         DepAccount depMoney = new DepAccount(0.);
         CreditAccount creditMoney = new CreditAccount(0.);
+
         while (true) {
             System.out.println("Выберите операцию:\n1 - Посмотреть баланс\n2 - Внести деньги\n3 - Получить деньги\n ");
             Scanner scanner = new Scanner(System.in);

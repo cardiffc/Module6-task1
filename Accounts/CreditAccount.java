@@ -11,7 +11,7 @@ public class CreditAccount extends CurAccount {
     {
         if ((amount + (amount / 100) * COMMISSION) <= this.amount)
         {
-            this.amount -= (amount - (amount / 100) * COMMISSION);
+            this.amount -= (amount + (amount / 100) * COMMISSION);
             getWdMessage(amount, this.amount);
         } else
         {

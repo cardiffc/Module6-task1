@@ -16,8 +16,8 @@ public class DepAccount extends CurAccount {
     {
          LocalDate wdDay = LocalDate.now();
         if (amount <= this.amount) {
-            if (wdDay.getMonth().compareTo(depInDate.getMonth()) >= 1
-                    && wdDay.getDayOfMonth() - depInDate.getDayOfMonth() >=0)
+            if ((wdDay.getMonth().compareTo(depInDate.getMonth()) >= 1)
+                    && ((wdDay.getDayOfMonth() - depInDate.getDayOfMonth()) >= 0))
             {
                 this.amount -= amount;
                 getWdMessage(amount, this.amount);
