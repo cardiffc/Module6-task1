@@ -9,27 +9,21 @@ public class DepAccount extends CurAccount {
     }
     public void setAmount(double amount)
     {
-        this.amount += amount;
+        super.setAmount(amount);
         depInDate = LocalDate.now();
     }
     public void wdAmount (double amount)
     {
-         LocalDate wdDay = LocalDate.now();
-        if (amount <= this.amount) {
-            if ((wdDay.getMonth().compareTo(depInDate.getMonth()) >= 1)
-                    && ((wdDay.getDayOfMonth() - depInDate.getDayOfMonth()) >= 0))
-            {
-                this.amount -= amount;
-                getWdMessage(amount, this.amount);
-            } else {
-                System.out.println("Снятие денег с данного счета не возможно до " + depInDate.plusMonths(1) + " !");
-            }
-        } else
-            {
-                getNotEnouthMoneyMsg();
-            }
+        LocalDate wdDay = LocalDate.now();
+        if ((wdDay.getMonth().compareTo(depInDate.getMonth()) >= 1)
+                && ((wdDay.getDayOfMonth() - depInDate.getDayOfMonth()) >= 0))
+        {
+            super.wdAmount(amount);
+        } else {
+            System.out.println("Снятие денег с данного счета не возможно до " + depInDate.plusMonths(1) + " !");
         }
     }
+}
 
 
 
